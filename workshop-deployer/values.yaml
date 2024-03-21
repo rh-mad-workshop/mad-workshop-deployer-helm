@@ -1,0 +1,171 @@
+nameOverride: ""
+fullnameOverride: ""
+
+replicaCount: 1
+
+image:
+  repository: quay.io/openshiftlabs/mad-workshop-deployer
+  pullPolicy: IfNotPresent
+  tag: "latest"
+
+imagePullSecrets: []
+
+serviceAccount:
+  create: true
+  annotations:
+    serviceaccounts.openshift.io/oauth-redirectreference.workshop-deployer: >-
+      {"kind":"OAuthRedirectReference","apiVersion":"v1","reference":{"kind":"Route","name":"workshop-deployer"}}
+  name: ""
+
+podAnnotations: {}
+
+podSecurityContext:
+  runAsNonRoot: true
+  seccompProfile:
+    type: RuntimeDefault
+
+securityContext:
+  allowPrivilegeEscalation: false
+  capabilities:
+    drop:
+      - ALL
+
+resources:
+  limits:
+    cpu: 250m
+    memory: 250Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi
+
+showroom:
+  hostPrefix:
+  path: /content/modules
+
+modules:
+  maxCount:
+readinessProbe:
+  httpGet:
+    path: /q/health/ready
+    port: http
+    scheme: HTTP
+  initialDelaySeconds: 5
+  timeoutSeconds: 3
+  periodSeconds: 10
+  successThreshold: 1
+  failureThreshold: 3
+livenessProbe:
+  httpGet:
+    path: /q/health/live
+    port: http
+    scheme: HTTP
+  initialDelaySeconds: 30
+  timeoutSeconds: 3
+  periodSeconds: 10
+  successThreshold: 1
+  failureThreshold: 3
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+  # targetMemoryUtilizationPercentage: 80
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
+route:
+  enabled: true
+  host:
+  tlsEnabled: true
+  tls:
+    termination: reencrypt
+    insecureEdgeTerminationPolicy: Redirect
+
+service:
+  type: ClusterIP
+
+module:
+  module_globex:
+    name: module-globex
+    applicationName: globex
+    namespace: globex-gitops-{{ __user }}
+    destination:
+      namespace: globex-{{ __user }}
+    source:
+      repoUrl: https://github.com/rh-mad-workshop/coolstore-microservice-helm.git
+      targetRevision: main
+      path: chart-source/coolstore
+  module_eap:
+    name: module-eap
+    namespace: globex-eap-{{ __user }}
+    destination:
+      namespace: globex-eap-{{ __user }}
+    source:
+      repoUrl: https://github.com/rh-mad-workshop/helm.git
+      targetRevision: main
+      path: globex-cdc
+  module_apim:
+    name: module-apim
+    namespace: globex-gitops-{{ __user }}
+    destination:
+      namespace: globex-apim-{{ __user }}
+    source:
+      repoUrl: https://github.com/rh-mad-workshop/helm.git
+      targetRevision: main
+      path: globex-apim
+  module_camel:
+    name: module-camel
+    namespace: globex-gitops-{{ __user }}
+    destination:
+      namespace: globex-camel-{{ __user }}
+    source:
+      repoUrl: https://github.com/rh-mad-workshop/helm.git
+      targetRevision: main
+      path: globex-camel
+  module_skupper:
+    name: module-skupper
+    namespace: globex-gitops-{{ __user }}
+    destination:
+      namespace: globex-skupper-{{ __user }}
+    source:
+      repoUrl: https://github.com/rh-mad-workshop/helm.git
+      targetRevision: main
+      path: globex-skupper
+  module_serverless:
+    name: module-serverless
+    namespace: globex-gitops-{{ __user }}
+    destination:
+      namespace: globex-serverless-{{ __user }}
+    source:
+      repoUrl: https://github.com/rh-mad-workshop/globex-sentiment-analysis-helm.git
+      targetRevision: main
+      path: globex-sentiment-analysis/sentiment-analysis
+
+rolebinding:
+  namespace_prefix: globex-gitops-user
+
+user:
+  count:
+
+variable:
+  user: "{{ __user }}"
+
+openshift:
+  domain:
+
+argo:
+  namespace:
+    prefix: globex-gitops
+  name:
+    prefix: globex-gitops
+
+oauthProxy:
+  image:
+    repository: quay.io/openshift/origin-oauth-proxy
+    pullPolicy: IfNotPresent
+    tag: "4.13"

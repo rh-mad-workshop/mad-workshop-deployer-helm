@@ -1,0 +1,300 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: workshop-modules
+data:
+  modules.json: |
+    {
+      "modules": [
+        {
+          "name": "Introduction to Modern App Development Dev Track",
+          "description": "This chapter explains the technical and functional environment for this workshop, with a walkthrough of the existing implementation. This module is deployed by default for you. Click on the Intro link to learn more about this workshop.",
+          "tags": {
+            "primary": [
+              "#Application Platform",
+              "#Cloud Native Runtimes",
+              "#DevTrack",
+              "#Red Hat Summit 2024"
+            ],
+            "secondary": [
+              "#introduction",
+              "#overview"          
+            ]
+          },
+          "configMap": "module-globex",
+          "isDefault": true,
+          "namespaces": ["globex-{{`{{ __user }}`}}"]
+        },
+        {
+          "name": "Migration to JBoss EAP",
+          "description": "In this module you will learn how to modernize the monolithic Java application on a proprietary app server to the modern JBoss EAP using Migration Toolkit for Application and Red Hat Dev Spaces.",
+          "tags": {
+            "primary": [
+              "#Migration",
+              "#Existing Applications",
+              "#Cloud Native Developer",
+              "#Red Hat Summit 2024"
+            ],
+            "secondary": [
+              "#hands-on"
+            ]
+          },
+          "configMap": "module-eap",
+          "namespaces": ["globex-eap-{{`{{ __user }}`}}"]
+        },
+        {
+          "name": "Day 2 operations with Ansible MiddleWare",
+          "description": "In this module you will learn how to automate many of the manual administrative tasks as daily jobs for JBoss middleware servers using Ansible.",
+          "tags": {
+            "primary": [
+              "#Operation",
+              "#Existing Applications",
+              "#Cloud Native Architect",
+              "#Platform Engineer"
+            ],
+            "secondary": [
+              "#hands-on"
+            ]
+          },
+          "configMap": "module-asnible-mw",
+          "namespaces": ["globex-asnible-mw-{{`{{ __user }}`}}"]          
+        },
+        {
+          "name": "Assessment and Analysis",
+          "description": "In this module you will learn how to earn how to access the application portfolio and analyze the siloed application by scanning all source code and properties for code modification along with an analysis report using Migration Toolkit for Applications.",
+          "tags": {
+            "primary": [
+              "#Migration",
+              "#Existing Applications",
+              "#Cloud Native Developer"
+            ],
+            "secondary": [
+              "#hands-on"
+            ]
+          },
+          "configMap": "module-mta-analyze",
+          "namespaces": ["globex-mta-analyze-{{`{{ __user }}`}}"]
+        },
+        {
+          "name": "Refactor",
+          "description": "In this module you will understand the modernization issues related to the siloed application and learn how you can resolve them by code modification using Migration Toolkit for Applications.",
+          "tags": {
+            "primary": [
+              "#Migration",
+              "#Existing Applications",
+              "#Cloud Native Developer"
+            ],
+            "secondary": [
+              "#hands-on"
+            ]
+          },
+          "configMap": "module-mta-refactor",
+          "namespaces": ["globex-mta-refactor-{{`{{ __user }}`}}"]
+        },
+        {
+          "name": "Deploy App to OpenShift with Helm",
+          "description": "In this module you will understand the modernization issues related to the siloed application and learn how you can resolve them by code modification using Migration Toolkit for Applications.",
+          "tags": {
+            "primary": [
+              "#Migration",
+              "#Existing Applications",
+              "#Cloud Native Developer",
+              "#Cloud Native Architect",
+              "#Red Hat Summit 2024"
+            ],
+            "secondary": [
+              "#hands-on"
+            ]
+          },
+          "configMap": "module-deploy-helm",
+          "namespaces": ["globex-deploy-helm-{{`{{ __user }}`}}"]
+        },
+        {
+          "name": "Cloud Native App Innerloop Development",
+          "description": "In this module you will explore how to increase developer productivity by optimizing the developer workflow and how best to code, run, and deploy cloud native applications on OpenShift using rich and advanced development services.",
+          "tags": {
+            "primary": [
+              "#Developer Experience",
+              "#First Applications",
+              "#Cloud Native Developer",
+              "#Red Hat Summit 2024"
+            ],
+            "secondary": [
+              "#hands-on"
+            ]
+          },
+          "configMap": "module-innerloop",
+          "namespaces": ["globex-innerloop-{{`{{ __user }}`}}"]
+        },
+        {
+          "name": "Accelerating Software development with Red Hat Developer Hub",
+          "description": "In this module you will explore Internal Developer Portals for cloud native developers to show self-service with guardrails for cloud-native development and best practices with GitOps & automation in software development.",
+          "tags": {
+            "primary": [
+              "#Developer Experience",
+              "#First Applications",
+              "#Cloud Native Developer",
+              "#Platform Engineer",
+              "#Red Hat Summit 2024"
+            ],
+            "secondary": [
+              "#hands-on"
+            ]
+          },
+          "configMap": "module-rhdh",
+          "namespaces": ["globex-rhdh-{{`{{ __user }}`}}"]
+        },
+        {
+          "name": "Outerloop with OpenShift Pipelines and GitOps",
+          "description": "In this module you will understand the modernization issues related to the siloed application and learn how you can resolve them by code modification using Migration Toolkit for Applications.",
+          "tags": {
+            "primary": [
+              "#Application Platform Services",
+              "#Cluster Capabilities",
+              "#Cloud Native Developer",
+              "#Platform Engineer"
+            ],
+            "secondary": [
+              "#hands-on"
+            ]
+          },
+          "configMap": "module-outerloop",
+          "namespaces": ["globex-outerloop-{{`{{ __user }}`}}"]
+        },
+        {
+          "name": "Service Mesh",
+          "description": "In this module you will improve visibility across the services, understand how services interact, and be able to dynamically alter the topology without requiring developers to make code changes.",
+          "tags": {
+            "primary": [
+              "#Application Platform Services",
+              "#Cluster Capabilities",
+              "#Cloud Native Developer"
+            ],
+            "secondary": [
+              "#hands-on"
+            ]
+          },
+          "configMap": "module-servicemesh",
+          "namespaces": ["globex-servicemesh-{{`{{ __user }}`}}"]
+        },
+        {
+          "name": "Serverless",
+          "description": "In this module you will learn how to create and deploy a simple serverless function as a test, then re-deploy Quarkus native coolstore services using OpenShift Serverless, observe scale up/down when traffic generated.",
+          "tags": {
+            "primary": [
+              "#Application Platform Services",
+              "#Cluster Capabilities",
+              "#Cloud Native Developer"
+            ],
+            "secondary": [
+              "#hands-on"
+            ]
+          },
+          "configMap": "module-serverless",
+          "namespaces": ["globex-serverless-{{`{{ __user }}`}}"]
+        },
+        {
+          "name": "Build Event-driven Applications",
+          "description": "In this module you will learn how to enhance existing applications with event-driven components to provide new functionality. Operator-based installation and maintenance of complex middleware components like Apache Kafka allow for easy and rapid adoption of these components on OpenShift and Kubernetes. This allows the teams to focus on the business requirements.",
+          "tags": {
+            "primary": [
+              "#Cloud Native Architectures",
+              "#First Applications",
+              "#Cloud Native Developer",
+              "#Cloud Native Architect"
+            ],
+            "secondary": [
+              "#hands-on"
+            ]
+          },
+          "configMap": "module-eda",
+          "namespaces": ["globex-eda-{{`{{ __user }}`}}"]
+        },
+        {
+          "name": "Manage and Secure APIs",
+          "description": "In this module you will learn how an API First Approach provides the right framework to build microservices and APIs-based systems.",
+          "tags": {
+            "primary": [
+              "#Cloud Native Architectures",
+              "#Cluster Capabilities",
+              "#Cloud Native Developer",
+              "#Cloud Native Architect"
+            ],
+            "secondary": [
+              "#hands-on"
+            ]
+          },
+          "configMap": "module-apim",
+          "namespaces": ["globex-apim-{{`{{ __user }}`}}"]
+        },
+        {
+          "name": "App Observability and Tracing",
+          "description": "In this module you learn how to observe the existing cloud native applications and visualize telmetry data using OpenShift distributed tracing and observability platforms.",
+          "tags": {
+            "primary": [
+              "#Cloud Native Architectures",
+              "#Existing Applications",
+              "#Cloud Native Developer",
+              "#Cloud Native Architect"
+            ],
+            "secondary": [
+              "#hands-on"
+            ]
+          },
+          "configMap": "module-observability",
+          "namespaces": ["globex-observability-{{`{{ __user }}`}}"]
+        },
+        {
+          "name": "Create an Intelligent Application",
+          "description": "In this module you learn how development teams can create intelligent applications powered by Artificial Intelligence and Machine Learning (AI/ML) algorithms on OpenShift, with the help of Red Hat OpenShift AI.",
+          "tags": {
+            "primary": [
+              "#Cloud Native Architectures",
+              "#Cluster Capabilities",
+              "#Cloud Native Developer",
+              "#Platform Engineer"
+            ],
+            "secondary": [
+              "#hands-on"
+            ]
+          },
+          "configMap": "module-ai",
+          "namespaces": ["globex-ai-{{`{{ __user }}`}}"]
+        },
+        {
+          "name": "Securing Apps with OpenShift and Keycloak",
+          "description": "In this module you learn how to add secure endpoints and sensitive configuration to the existing cloud native applications via secrets, observe the result, explore secrets management.",
+          "tags": {
+            "primary": [
+              "#Cloud Native Architectures",
+              "#Existing Applications",
+              "#Cloud Native Developer",
+              "#Cloud Native Architect",
+              "#Red Hat Summit 2024"
+            ],
+            "secondary": [
+              "#hands-on"
+            ]
+          },
+          "configMap": "module-keycloak",
+          "namespaces": ["globex-keycloak-{{`{{ __user }}`}}"]
+        },
+        {
+          "name": "Service Interconnect",
+          "description": "In this module you discover how to build a service network to connect disparate services using a secured layer 7 service network.",
+          "tags": {
+            "primary": [
+              "#Cloud Native Architectures",
+              "#Cluster Capabilities",
+              "#Cloud Native Architect",
+              "#Platform Engineer"
+            ],
+            "secondary": [
+              "#hands-on"
+            ]
+          },
+          "configMap": "module-skupper",
+          "namespaces": ["globex-skupper-{{`{{ __user }}`}}", "globex-skupper-db-{{`{{ __user }}`}}"]
+        }
+      ]
+    }

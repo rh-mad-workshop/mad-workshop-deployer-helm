@@ -1,0 +1,40 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: module-globex
+data:
+  isDefault: 'true'
+  module-globex.json: |-
+    {
+        "apiVersion": "argoproj.io/v1alpha1",
+        "kind": "Application",
+        "metadata": {
+          "name": "globex",
+          "namespace": "{{ .Values.module.module_globex.namespace }}",
+          "finalizers": [
+            "resources-finalizer.argocd.argoproj.io/foreground"
+          ]
+        },
+        "spec": {
+          "destination": {
+            "name": "",
+            "namespace": "{{ .Values.module.module_globex.destination.namespace }}",
+            "server": "https://kubernetes.default.svc"
+          },
+          "project": "default",
+          "syncPolicy": {
+            "automated": {
+              "prune": false,
+              "selfHeal": false
+            }
+          },
+          "source": {
+            "repoURL": "https://github.com/rh-mad-workshop/coolstore-microservice-helm.git",
+            "targetRevision": "main",
+            "path": "chart-source/coolstore",
+            "helm": {
+              "values": ""
+            }
+          }
+        }
+      }
