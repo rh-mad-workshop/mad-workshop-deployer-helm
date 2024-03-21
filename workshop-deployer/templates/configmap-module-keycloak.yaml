@@ -1,7 +1,7 @@
 kind: ConfigMap
 apiVersion: v1
 metadata:
-  name: module-eap
+  name: module-keycloak
 data:
   module-cdc.json: |
     {

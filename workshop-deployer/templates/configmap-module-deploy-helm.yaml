@@ -1,7 +1,7 @@
 kind: ConfigMap
 apiVersion: v1
 metadata:
-  name: module-camel
+  name: module-deploy-helm
 data:
   module-camel.json: |
     {
