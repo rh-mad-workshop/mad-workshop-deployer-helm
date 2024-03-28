@@ -102,49 +102,49 @@ module:
       path: chart-source/coolstore
   module_eap:
     name: module-eap
-    namespace: globex-eap-{{ __user }}
+    namespace: globex-gitops-{{ __user }}
     destination:
       namespace: globex-eap-{{ __user }}
     source:
-      repoUrl: https://github.com/rh-mad-workshop/helm.git
+      repoUrl: https://github.com/rh-mad-workshop/mad-workshop-module-helm.git
       targetRevision: main
-      path: globex-cdc
-  module_apim:
-    name: module-apim
+      path: globex-eap
+  module_deploy_helm:
+    name: module-deploy-helm
     namespace: globex-gitops-{{ __user }}
     destination:
-      namespace: globex-apim-{{ __user }}
+      namespace: globex-deploy-helm-{{ __user }}
     source:
-      repoUrl: https://github.com/rh-mad-workshop/helm.git
+      repoUrl: https://github.com/rh-mad-workshop/mad-workshop-module-helm.git
       targetRevision: main
-      path: globex-apim
-  module_camel:
-    name: module-camel
+      path: globex-deploy-helm
+  module_innerloop:
+    name: module-innerloop
     namespace: globex-gitops-{{ __user }}
     destination:
-      namespace: globex-camel-{{ __user }}
+      namespace: globex-innerloop-{{ __user }}
     source:
-      repoUrl: https://github.com/rh-mad-workshop/helm.git
+      repoUrl: https://github.com/rh-mad-workshop/mad-workshop-module-helm.git
       targetRevision: main
-      path: globex-camel
-  module_skupper:
-    name: module-skupper
+      path: globex-innerloop
+  module_devhub:
+    name: module-devhub
     namespace: globex-gitops-{{ __user }}
     destination:
-      namespace: globex-skupper-{{ __user }}
+      namespace: globex-devhub-{{ __user }}
     source:
-      repoUrl: https://github.com/rh-mad-workshop/helm.git
+      repoUrl: https://github.com/rh-mad-workshop/mad-workshop-module-helm.git
       targetRevision: main
-      path: globex-skupper
-  module_serverless:
-    name: module-serverless
+      path: globex-devhub
+  module_keycloak:
+    name: module-keycloak
     namespace: globex-gitops-{{ __user }}
     destination:
-      namespace: globex-serverless-{{ __user }}
+      namespace: globex-keycloak-{{ __user }}
     source:
-      repoUrl: https://github.com/rh-mad-workshop/globex-sentiment-analysis-helm.git
+      repoUrl: https://github.com/rh-mad-workshop/mad-workshop-module-helm.git
       targetRevision: main
-      path: globex-sentiment-analysis/sentiment-analysis
+      path: globex-keycloak
 
 rolebinding:
   namespace_prefix: globex-gitops-user

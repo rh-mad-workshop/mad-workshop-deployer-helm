@@ -1,15 +1,15 @@
 kind: ConfigMap
 apiVersion: v1
 metadata:
-  name: module-eap
+  name: module-innerloop
 data:
-  module-eap.json: |
+  module-innerloop.json: |
     {
       "apiVersion": "argoproj.io/v1alpha1",
       "kind": "Application",
       "metadata": {
-        "name": "{{ .Values.module.module_eap.name }}",
-        "namespace": "{{ .Values.module.module_eap.namespace }}",
+        "name": "{{ .Values.module.module_innerloop.name }}",
+        "namespace": "{{ .Values.module.module_innerloop.namespace }}",
         "finalizers": [
           "resources-finalizer.argocd.argoproj.io/foreground"
         ]
@@ -17,7 +17,7 @@ data:
       "spec": {
         "destination": {
           "name": "",
-          "namespace": "{{ .Values.module.module_eap.destination.namespace }}",
+          "namespace": "{{ .Values.module.module_innerloop.destination.namespace }}",
           "server": "https://kubernetes.default.svc"
         },
         "project": "default",
@@ -28,9 +28,9 @@ data:
           }
         },
         "source": {
-          "repoURL": "{{ .Values.module.module_eap.source.repoUrl }}",
-          "targetRevision": "{{ .Values.module.module_eap.source.targetRevision }}",
-          "path": "{{ .Values.module.module_eap.source.path }}",
+          "repoURL": "{{ .Values.module.module_innerloop.source.repoUrl }}",
+          "targetRevision": "{{ .Values.module.module_innerloop.source.targetRevision }}",
+          "path": "{{ .Values.module.module_innerloop.source.path }}",
           "helm": {
             "values": ""
           }

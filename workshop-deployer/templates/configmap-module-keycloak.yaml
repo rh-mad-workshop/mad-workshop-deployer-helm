@@ -3,33 +3,21 @@ apiVersion: v1
 metadata:
   name: module-keycloak
 data:
-  module-cdc.json: |
+  module-keycloak.json: |
     {
       "apiVersion": "argoproj.io/v1alpha1",
       "kind": "Application",
       "metadata": {
-        "name": "{{ .Values.module.module_cdc.name }}",
-        "namespace": "{{ .Values.module.module_cdc.namespace }}",
+        "name": "{{ .Values.module.module_keycloak.name }}",
+        "namespace": "{{ .Values.module.module_keycloak.namespace }}",
         "finalizers": [
           "resources-finalizer.argocd.argoproj.io/foreground"
         ]
       },
       "spec": {
-        "ignoreDifferences": [
-          {
-            "group": "kafka.strimzi.io",
-            "kind": "KafkaConnect",
-            "jsonPointers": [
-              "/spec/bootstrapServers",
-              "/spec/authentication",
-              "/spec/tls",
-              "/spec/replicas"
-            ]
-          }
-        ],
         "destination": {
           "name": "",
-          "namespace": "{{ .Values.module.module_cdc.destination.namespace }}",
+          "namespace": "{{ .Values.module.module_keycloak.destination.namespace }}",
           "server": "https://kubernetes.default.svc"
         },
         "project": "default",
@@ -40,11 +28,11 @@ data:
           }
         },
         "source": {
-          "repoURL": "{{ .Values.module.module_cdc.source.repoUrl }}",
-          "targetRevision": "{{ .Values.module.module_cdc.source.targetRevision }}",
-          "path": "{{ .Values.module.module_cdc.source.path }}",
+          "repoURL": "{{ .Values.module.module_keycloak.source.repoUrl }}",
+          "targetRevision": "{{ .Values.module.module_keycloak.source.targetRevision }}",
+          "path": "{{ .Values.module.module_keycloak.source.path }}",
           "helm": {
-            "values": "\ndebezium:\n  deploy: false\ncashbackConnector:\n  deploy: false\nintegrationPlatform:\n  deploy: true\n\nkafka:\n  namespace: globex-mw-{{ .Values.variable.user }}\n\ncashback-db:\n  persistence:\n    mode: ephemeral\n"
+            "values": ""
           }
         }
       }
