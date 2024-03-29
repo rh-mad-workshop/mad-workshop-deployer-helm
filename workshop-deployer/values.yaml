@@ -90,16 +90,16 @@ service:
   type: ClusterIP
 
 module:
-  module_globex:
-    name: module-globex
-    applicationName: globex
+  module_globex_intro:
+    name: module-globex-intro
+    applicationName: globex-intro
     namespace: globex-gitops-{{ __user }}
     destination:
-      namespace: globex-{{ __user }}
+      namespace: globex-intro-{{ __user }}
     source:
-      repoUrl: https://github.com/rh-mad-workshop/coolstore-microservice-helm.git
+      repoUrl: https://github.com/rh-mad-workshop/mad-workshop-module-helm.git
       targetRevision: main
-      path: chart-source/coolstore
+      path: globex-intro
   module_eap:
     name: module-eap
     namespace: globex-gitops-{{ __user }}

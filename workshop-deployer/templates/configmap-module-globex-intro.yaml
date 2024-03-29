@@ -1,16 +1,16 @@
 kind: ConfigMap
 apiVersion: v1
 metadata:
-  name: module-globex
+  name: module-globex-intro
 data:
   isDefault: 'true'
-  module-globex.json: |-
+  module-globex-intro.json: |-
     {
         "apiVersion": "argoproj.io/v1alpha1",
         "kind": "Application",
         "metadata": {
           "name": "globex",
-          "namespace": "{{ .Values.module.module_globex.namespace }}",
+          "namespace": "{{ .Values.module.module_globex_intro.namespace }}",
           "finalizers": [
             "resources-finalizer.argocd.argoproj.io/foreground"
           ]
@@ -18,7 +18,7 @@ data:
         "spec": {
           "destination": {
             "name": "",
-            "namespace": "{{ .Values.module.module_globex.destination.namespace }}",
+            "namespace": "{{ .Values.module.module_globex_intro.destination.namespace }}",
             "server": "https://kubernetes.default.svc"
           },
           "project": "default",
@@ -29,9 +29,9 @@ data:
             }
           },
           "source": {
-            "repoURL": "https://github.com/rh-mad-workshop/coolstore-microservice-helm.git",
+            "repoURL": "https://github.com/rh-mad-workshop/mad-workshop-module-helm.git",
             "targetRevision": "main",
-            "path": "chart-source/coolstore",
+            "path": "globex-intro",
             "helm": {
               "values": ""
             }
