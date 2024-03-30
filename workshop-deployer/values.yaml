@@ -145,6 +145,24 @@ module:
       repoUrl: https://github.com/rh-mad-workshop/mad-workshop-module-helm.git
       targetRevision: main
       path: globex-keycloak
+  module_serverless:
+    name: module-serverless
+    namespace: globex-gitops-{{ __user }}
+    destination:
+      namespace: globex-serverless-{{ __user }}
+    source:
+      repoUrl: https://github.com/rh-mad-workshop/mad-workshop-module-helm.git
+      targetRevision: main
+      path: globex-serverless
+  module_skupper:
+    name: module-skupper
+    namespace: globex-gitops-{{ __user }}
+    destination:
+      namespace: globex-skupper-{{ __user }}
+    source:
+      repoUrl: https://github.com/rh-mad-workshop/mad-workshop-module-helm.git
+      targetRevision: main
+      path: globex-skupper
 
 rolebinding:
   namespace_prefix: globex-gitops-user
