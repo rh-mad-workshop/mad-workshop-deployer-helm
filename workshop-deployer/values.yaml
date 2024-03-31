@@ -163,6 +163,15 @@ module:
       repoUrl: https://github.com/rh-mad-workshop/mad-workshop-module-helm.git
       targetRevision: main
       path: globex-skupper
+  module_apim:
+    name: module-apim
+    namespace: globex-gitops-{{ __user }}
+    destination:
+      namespace: globex-apim-{{ __user }}
+    source:
+      repoUrl: https://github.com/rh-mad-workshop/mad-workshop-module-helm.git
+      targetRevision: main
+      path: globex-apim
 
 rolebinding:
   namespace_prefix: globex-gitops-user
