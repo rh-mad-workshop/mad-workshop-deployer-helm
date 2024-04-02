@@ -1,0 +1,49 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: module-ai
+data:
+  module-ai.json: |
+    {
+      "apiVersion": "argoproj.io/v1alpha1",
+      "kind": "Application",
+      "metadata": {
+        "name": "{{ .Values.module.module_ai.name }}",
+        "namespace": "{{ .Values.module.module_ai.namespace }}",
+        "finalizers": [
+          "resources-finalizer.argocd.argoproj.io/foreground"
+        ]
+      },
+      "spec": {
+        "ignoreDifferences": [
+          {
+            "group": "serving.knative.dev",
+            "kind": "Service",
+            "jsonPointers": [
+              "/spec/template/spec/containers/0/name",
+              "/spec/template/spec/containers/0/env"
+            ]
+          }
+        ],
+        "destination": {
+          "name": "",
+          "namespace": "{{ .Values.module.module_ai.destination.namespace }}",
+          "server": "https://kubernetes.default.svc"
+        },
+        "project": "default",
+        "syncPolicy": {
+          "automated": {
+            "prune": false,
+            "selfHeal": false
+          }
+        },
+        "source": {
+          "repoURL": "{{ .Values.module.module_ai.source.repoUrl }}",
+          "targetRevision": "{{ .Values.module.module_ai.source.targetRevision }}",
+          "path": "{{ .Values.module.module_ai.source.path }}",
+          "helm": {
+            "values": ""
+          }
+        }
+      }
+    }

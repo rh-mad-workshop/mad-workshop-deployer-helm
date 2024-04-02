@@ -1,0 +1,39 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: module-outerloop
+data:
+  module-outerloop.json: |
+    {
+      "apiVersion": "argoproj.io/v1alpha1",
+      "kind": "Application",
+      "metadata": {
+        "name": "{{ .Values.module.module_outerloop.name }}",
+        "namespace": "{{ .Values.module.module_outerloop.namespace }}",
+        "finalizers": [
+          "resources-finalizer.argocd.argoproj.io/foreground"
+        ]
+      },
+      "spec": {
+        "destination": {
+          "name": "",
+          "namespace": "{{ .Values.module.module_outerloop.destination.namespace }}",
+          "server": "https://kubernetes.default.svc"
+        },
+        "project": "default",
+        "syncPolicy": {
+          "automated": {
+            "prune": false,
+            "selfHeal": false
+          }
+        },
+        "source": {
+          "repoURL": "{{ .Values.module.module_outerloop.source.repoUrl }}",
+          "targetRevision": "{{ .Values.module.module_outerloop.source.targetRevision }}",
+          "path": "{{ .Values.module.module_outerloop.source.path }}",
+          "helm": {
+            "values": ""
+          }
+        }
+      }
+    }

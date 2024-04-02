@@ -1,0 +1,39 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: module-mta-analyze
+data:
+  module-mta_analyze.json: |
+    {
+      "apiVersion": "argoproj.io/v1alpha1",
+      "kind": "Application",
+      "metadata": {
+        "name": "{{ .Values.module.module_mta_analyze.name }}",
+        "namespace": "{{ .Values.module.module_mta_analyze.namespace }}",
+        "finalizers": [
+          "resources-finalizer.argocd.argoproj.io/foreground"
+        ]
+      },
+      "spec": {
+        "destination": {
+          "name": "",
+          "namespace": "{{ .Values.module.module_mta_analyze.destination.namespace }}",
+          "server": "https://kubernetes.default.svc"
+        },
+        "project": "default",
+        "syncPolicy": {
+          "automated": {
+            "prune": false,
+            "selfHeal": false
+          }
+        },
+        "source": {
+          "repoURL": "{{ .Values.module.module_mta_analyze.source.repoUrl }}",
+          "targetRevision": "{{ .Values.module.module_mta_analyze.source.targetRevision }}",
+          "path": "{{ .Values.module.module_mta_analyze.source.path }}",
+          "helm": {
+            "values": ""
+          }
+        }
+      }
+    }

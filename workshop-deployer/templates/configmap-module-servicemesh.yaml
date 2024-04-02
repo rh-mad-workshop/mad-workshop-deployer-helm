@@ -1,0 +1,49 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: module-servicemesh
+data:
+  module-servicemesh.json: |
+    {
+      "apiVersion": "argoproj.io/v1alpha1",
+      "kind": "Application",
+      "metadata": {
+        "name": "{{ .Values.module.module_servicemesh.name }}",
+        "namespace": "{{ .Values.module.module_servicemesh.namespace }}",
+        "finalizers": [
+          "resources-finalizer.argocd.argoproj.io/foreground"
+        ]
+      },
+      "spec": {
+        "ignoreDifferences": [
+          {
+            "group": "serving.knative.dev",
+            "kind": "Service",
+            "jsonPointers": [
+              "/spec/template/spec/containers/0/name",
+              "/spec/template/spec/containers/0/env"
+            ]
+          }
+        ],
+        "destination": {
+          "name": "",
+          "namespace": "{{ .Values.module.module_servicemesh.destination.namespace }}",
+          "server": "https://kubernetes.default.svc"
+        },
+        "project": "default",
+        "syncPolicy": {
+          "automated": {
+            "prune": false,
+            "selfHeal": false
+          }
+        },
+        "source": {
+          "repoURL": "{{ .Values.module.module_servicemesh.source.repoUrl }}",
+          "targetRevision": "{{ .Values.module.module_servicemesh.source.targetRevision }}",
+          "path": "{{ .Values.module.module_servicemesh.source.path }}",
+          "helm": {
+            "values": ""
+          }
+        }
+      }
+    }
