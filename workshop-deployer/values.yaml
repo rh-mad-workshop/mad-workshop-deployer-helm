@@ -109,15 +109,15 @@ module:
       repoUrl: https://github.com/rh-mad-workshop/mad-workshop-module-helm.git
       targetRevision: main
       path: globex-eap
-  module_asnible_mw:
-    name: module-asnible-mw
+  module_ansible_mw:
+    name: module-ansible-mw
     namespace: globex-gitops-{{ __user }}
     destination:
-      namespace: globex-asnible-mw-{{ __user }}
+      namespace: globex-ansible-mw-{{ __user }}
     source:
       repoUrl: https://github.com/rh-mad-workshop/mad-workshop-module-helm.git
       targetRevision: main
-      path: globex-asnible-mw
+      path: globex-ansible-mw
   module_mta_analyze:
     name: module-mta-analyze
     namespace: globex-gitops-{{ __user }}

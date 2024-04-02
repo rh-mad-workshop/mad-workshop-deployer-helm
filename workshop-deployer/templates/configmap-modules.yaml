@@ -56,8 +56,8 @@ data:
               "#hands-on"
             ]
           },
-          "configMap": "module-asnible-mw",
-          "namespaces": ["globex-asnible-mw-{{`{{ __user }}`}}"]          
+          "configMap": "module-ansible-mw",
+          "namespaces": ["globex-ansible-mw-{{`{{ __user }}`}}"]          
         },
         {
           "name": "Assessment and Analysis",
