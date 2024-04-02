@@ -141,8 +141,8 @@ data:
               "#hands-on"
             ]
           },
-          "configMap": "module-rhdh",
-          "namespaces": ["globex-rhdh-{{`{{ __user }}`}}"]
+          "configMap": "module-devhub",
+          "namespaces": ["globex-devhub-{{`{{ __user }}`}}"]
         },
         {
           "name": "Outerloop with OpenShift Pipelines and GitOps",

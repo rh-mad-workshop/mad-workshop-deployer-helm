@@ -1,15 +1,15 @@
 kind: ConfigMap
 apiVersion: v1
 metadata:
-  name: module-rhdh
+  name: module-devhub
 data:
-  module-rhdh.json: |
+  module-devhub.json: |
     {
       "apiVersion": "argoproj.io/v1alpha1",
       "kind": "Application",
       "metadata": {
-        "name": "{{ .Values.module.module_rhdh.name }}",
-        "namespace": "{{ .Values.module.module_rhdh.namespace }}",
+        "name": "{{ .Values.module.module_devhub.name }}",
+        "namespace": "{{ .Values.module.module_devhub.namespace }}",
         "finalizers": [
           "resources-finalizer.argocd.argoproj.io/foreground"
         ]
@@ -17,7 +17,7 @@ data:
       "spec": {
         "destination": {
           "name": "",
-          "namespace": "{{ .Values.module.module_rhdh.destination.namespace }}",
+          "namespace": "{{ .Values.module.module_devhub.destination.namespace }}",
           "server": "https://kubernetes.default.svc"
         },
         "project": "default",
@@ -28,9 +28,9 @@ data:
           }
         },
         "source": {
-          "repoURL": "{{ .Values.module.module_rhdh.source.repoUrl }}",
-          "targetRevision": "{{ .Values.module.module_rhdh.source.targetRevision }}",
-          "path": "{{ .Values.module.module_rhdh.source.path }}",
+          "repoURL": "{{ .Values.module.module_devhub.source.repoUrl }}",
+          "targetRevision": "{{ .Values.module.module_devhub.source.targetRevision }}",
+          "path": "{{ .Values.module.module_devhub.source.path }}",
           "helm": {
             "values": ""
           }

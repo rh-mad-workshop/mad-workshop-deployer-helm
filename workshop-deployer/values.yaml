@@ -109,6 +109,33 @@ module:
       repoUrl: https://github.com/rh-mad-workshop/mad-workshop-module-helm.git
       targetRevision: main
       path: globex-eap
+  module_asnible_mw:
+    name: module-asnible-mw
+    namespace: globex-gitops-{{ __user }}
+    destination:
+      namespace: globex-asnible-mw-{{ __user }}
+    source:
+      repoUrl: https://github.com/rh-mad-workshop/mad-workshop-module-helm.git
+      targetRevision: main
+      path: globex-asnible-mw
+  module_mta_analyze:
+    name: module-mta-analyze
+    namespace: globex-gitops-{{ __user }}
+    destination:
+      namespace: globex-mta-analyze-{{ __user }}
+    source:
+      repoUrl: https://github.com/rh-mad-workshop/mad-workshop-module-helm.git
+      targetRevision: main
+      path: globex-mta-analyze
+  module_mta_refactor:
+    name: module-mta-refactor
+    namespace: globex-gitops-{{ __user }}
+    destination:
+      namespace: globex-mta-refactor-{{ __user }}
+    source:
+      repoUrl: https://github.com/rh-mad-workshop/mad-workshop-module-helm.git
+      targetRevision: main
+      path: globex-mta-refactor
   module_deploy_helm:
     name: module-deploy-helm
     namespace: globex-gitops-{{ __user }}
@@ -136,15 +163,15 @@ module:
       repoUrl: https://github.com/rh-mad-workshop/mad-workshop-module-helm.git
       targetRevision: main
       path: globex-devhub
-  module_keycloak:
-    name: module-keycloak
+  module_servicemesh:
+    name: module-servicemesh
     namespace: globex-gitops-{{ __user }}
     destination:
-      namespace: globex-keycloak-{{ __user }}
+      namespace: globex-servicemesh-{{ __user }}
     source:
       repoUrl: https://github.com/rh-mad-workshop/mad-workshop-module-helm.git
       targetRevision: main
-      path: globex-keycloak
+      path: globex-servicemesh
   module_serverless:
     name: module-serverless
     namespace: globex-gitops-{{ __user }}
@@ -154,15 +181,15 @@ module:
       repoUrl: https://github.com/rh-mad-workshop/mad-workshop-module-helm.git
       targetRevision: main
       path: globex-serverless
-  module_skupper:
-    name: module-skupper
+  module_eda:
+    name: module-eda
     namespace: globex-gitops-{{ __user }}
     destination:
-      namespace: globex-skupper-{{ __user }}
+      namespace: globex-eda-{{ __user }}
     source:
       repoUrl: https://github.com/rh-mad-workshop/mad-workshop-module-helm.git
       targetRevision: main
-      path: globex-skupper
+      path: globex-eda
   module_apim:
     name: module-apim
     namespace: globex-gitops-{{ __user }}
@@ -172,6 +199,42 @@ module:
       repoUrl: https://github.com/rh-mad-workshop/mad-workshop-module-helm.git
       targetRevision: main
       path: globex-apim
+  module_observability:
+    name: module-observability
+    namespace: globex-gitops-{{ __user }}
+    destination:
+      namespace: globex-observability-{{ __user }}
+    source:
+      repoUrl: https://github.com/rh-mad-workshop/mad-workshop-module-helm.git
+      targetRevision: main
+      path: globex-observability
+  module_ai:
+    name: module-ai
+    namespace: globex-gitops-{{ __user }}
+    destination:
+      namespace: globex-ai-{{ __user }}
+    source:
+      repoUrl: https://github.com/rh-mad-workshop/mad-workshop-module-helm.git
+      targetRevision: main
+      path: globex-ai
+  module_keycloak:
+    name: module-keycloak
+    namespace: globex-gitops-{{ __user }}
+    destination:
+      namespace: globex-keycloak-{{ __user }}
+    source:
+      repoUrl: https://github.com/rh-mad-workshop/mad-workshop-module-helm.git
+      targetRevision: main
+      path: globex-keycloak
+  module_skupper:
+    name: module-skupper
+    namespace: globex-gitops-{{ __user }}
+    destination:
+      namespace: globex-skupper-{{ __user }}
+    source:
+      repoUrl: https://github.com/rh-mad-workshop/mad-workshop-module-helm.git
+      targetRevision: main
+      path: globex-skupper
 
 rolebinding:
   namespace_prefix: globex-gitops-user
@@ -195,4 +258,4 @@ oauthProxy:
   image:
     repository: quay.io/openshift/origin-oauth-proxy
     pullPolicy: IfNotPresent
-    tag: "4.13"
+    tag: "4.15"
