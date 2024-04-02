@@ -163,6 +163,15 @@ module:
       repoUrl: https://github.com/rh-mad-workshop/mad-workshop-module-helm.git
       targetRevision: main
       path: globex-devhub
+  module_outerloop:
+    name: module-outerloop
+    namespace: globex-gitops-{{ __user }}
+    destination:
+      namespace: globex-outerloop-{{ __user }}
+    source:
+      repoUrl: https://github.com/rh-mad-workshop/mad-workshop-module-helm.git
+      targetRevision: main
+      path: globex-outerloop
   module_servicemesh:
     name: module-servicemesh
     namespace: globex-gitops-{{ __user }}
