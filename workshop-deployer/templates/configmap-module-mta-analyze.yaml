@@ -3,7 +3,7 @@ apiVersion: v1
 metadata:
   name: module-mta-analyze
 data:
-  module-mta_analyze.json: |
+  module-mta-analyze.json: |
     {
       "apiVersion": "argoproj.io/v1alpha1",
       "kind": "Application",

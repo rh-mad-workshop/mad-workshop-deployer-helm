@@ -3,7 +3,7 @@ apiVersion: v1
 metadata:
   name: module-ansible-mw
 data:
-  module-ansible_mw.json: |
+  module-ansible-mw.json: |
     {
       "apiVersion": "argoproj.io/v1alpha1",
       "kind": "Application",
