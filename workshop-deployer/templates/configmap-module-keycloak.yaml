@@ -32,7 +32,7 @@ data:
           "targetRevision": "{{ .Values.module.module_keycloak.source.targetRevision }}",
           "path": "{{ .Values.module.module_keycloak.source.path }}",
           "helm": {
-            "values": ""
+            "values": "\ntargetNamespaces: globex-keycloak-{{ .Values.variable.user }}\n"
           }
         }
       }
