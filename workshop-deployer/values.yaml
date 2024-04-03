@@ -5,7 +5,7 @@ replicaCount: 1
 
 image:
   repository: quay.io/openshiftlabs/mad-workshop-deployer
-  pullPolicy: IfNotPresent
+  pullPolicy: Always
   tag: "latest"
 
 imagePullSecrets: []
