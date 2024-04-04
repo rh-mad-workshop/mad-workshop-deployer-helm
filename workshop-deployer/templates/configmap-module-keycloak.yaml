@@ -49,7 +49,7 @@ data:
           "subjects": [
             {
               "kind": "ServiceAccount",
-              "name": "globex-gitops-user1-argocd-application-controller",
+              "name": "globex-gitops-{{ .Values.variable.user }}-argocd-application-controller",
               "namespace": "{{ .Values.module.module_keycloak.namespace }}"
             }
           ]
