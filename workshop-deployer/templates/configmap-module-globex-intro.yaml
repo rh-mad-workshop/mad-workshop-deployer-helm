@@ -31,7 +31,7 @@ data:
           "source": {
             "repoURL": "https://github.com/rh-mad-workshop/mad-workshop-module-helm.git",
             "targetRevision": "main",
-            "path": "globex-mad-intro",
+            "path": "{{ .Values.module.module_innerloop.source.path }}",
             "helm": {
               "values": ""
             }
