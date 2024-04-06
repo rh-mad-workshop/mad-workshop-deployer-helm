@@ -35,24 +35,5 @@ data:
             "values": "\ntargetNamespaces: globex-keycloak-{{ .Values.variable.user }}\n"
           }
         }
-      },
-      "clusterResourceWhitelist": [
-        {
-          "apiGroups": [""],
-          "kind": "Namespace",
-          "name": "{{ .Values.module.module_keycloak.namespace }}"
-        }
-      ],
-      "clusterRoleBindings": [
-        {
-          "name": "argocd-cluster-admin-binding",
-          "subjects": [
-            {
-              "kind": "ServiceAccount",
-              "name": "globex-gitops-{{ .Values.variable.user }}-argocd-application-controller",
-              "namespace": "{{ .Values.module.module_keycloak.namespace }}"
-            }
-          ]
-        }
-      ]
+      }
     }
