@@ -21,9 +21,9 @@ data:
               "#overview"          
             ]
           },
-          "configMap": "module-globex-intro",
+          "configMap": "module-globex-init",
           "isDefault": true,
-          "namespaces": ["globex-intro-{{`{{ __user }}`}}"]
+          "namespaces": ["globex-init-{{`{{ __user }}`}}"]
         },
         {
           "name": "Migration to JBoss EAP",
