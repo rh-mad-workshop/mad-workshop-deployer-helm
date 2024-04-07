@@ -90,15 +90,15 @@ service:
   type: ClusterIP
 
 module:
-  module_globex_intro:
-    name: module-globex-intro
+  module_globex_init:
+    name: module-globex-init
     namespace: globex-gitops-{{ __user }}
     destination:
-      namespace: globex-intro-{{ __user }}
+      namespace: globex-init-{{ __user }}
     source:
       repoUrl: https://github.com/rh-mad-workshop/mad-workshop-module-helm.git
       targetRevision: main
-      path: globex-intro
+      path: globex-init
   module_eap:
     name: module-eap
     namespace: globex-gitops-{{ __user }}

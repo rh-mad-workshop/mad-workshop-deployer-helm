@@ -1,16 +1,16 @@
 kind: ConfigMap
 apiVersion: v1
 metadata:
-  name: module-globex-intro
+  name: module-globex-init
 data:
   isDefault: 'true'
-  module-globex-intro.json: |-
+  module-globex-init.json: |-
     {
         "apiVersion": "argoproj.io/v1alpha1",
         "kind": "Application",
         "metadata": {
-          "name": "{{ .Values.module.module_globex_intro.name }}",
-          "namespace": "{{ .Values.module.module_globex_intro.namespace }}",
+          "name": "{{ .Values.module.module_globex_init.name }}",
+          "namespace": "{{ .Values.module.module_globex_init.namespace }}",
           "finalizers": [
             "resources-finalizer.argocd.argoproj.io/foreground"
           ]
@@ -18,7 +18,7 @@ data:
         "spec": {
           "destination": {
             "name": "",
-            "namespace": "{{ .Values.module.module_globex_intro.destination.namespace }}",
+            "namespace": "{{ .Values.module.module_globex_init.destination.namespace }}",
             "server": "https://kubernetes.default.svc"
           },
           "project": "default",
@@ -31,7 +31,7 @@ data:
           "source": {
             "repoURL": "https://github.com/rh-mad-workshop/mad-workshop-module-helm.git",
             "targetRevision": "main",
-            "path": "{{ .Values.module.module_globex_intro.source.path }}",
+            "path": "{{ .Values.module.module_globex_init.source.path }}",
             "helm": {
               "values": ""
             }
