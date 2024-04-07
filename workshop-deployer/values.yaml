@@ -92,7 +92,6 @@ service:
 module:
   module_globex_intro:
     name: module-globex-intro
-    # applicationName: globex-intro
     namespace: globex-gitops-{{ __user }}
     destination:
       namespace: globex-intro-{{ __user }}
